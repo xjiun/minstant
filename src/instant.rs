@@ -4,12 +4,13 @@ use std::{
     ops::{Add, AddAssign, Sub, SubAssign},
     time::Duration,
 };
+use serde::{Deserialize, Serialize};
 use web_time::{SystemTime, UNIX_EPOCH};
 
 /// A measurement of a monotonically nondecreasing clock. Similar to
 /// [`std::time::Instant`](std::time::Instant) but is faster and more
 /// accurate if TSC is available.
-#[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
 #[repr(transparent)]
 pub struct Instant(u64);
 
